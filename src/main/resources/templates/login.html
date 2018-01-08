@@ -17,10 +17,25 @@
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
   integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
   crossorigin="anonymous"></script>
-<title>Admin Hello</title>
+<title>Login</title>
 </head>
 <body class="container">
-  <h1 th:text="'Admin Page Hello '+${userid}"></h1>
-  <a href="/admin/logout">logout</a>
+  <h1>User Login page</h1>
+  <form th:action="@{/loginapi}" method="post">
+    <div class="form-group">
+      <label for="user">ユーザID</label> <input id="user"
+        class="form-control" type="text" name="user">
+    </div>
+    <div class="form-group">
+      <label for="pass">パスワード</label> <input id="pass"
+        class="form-control" type="text" name="password">
+    </div>
+    <div class="form-group">
+      <button class="btn" type="submit">login</button>
+    </div>
+  </form>
+  <div class="alert alert-danger" th:if="${param.error}">
+    <span>ログインエラー</span>
+  </div>
 </body>
 </html>
